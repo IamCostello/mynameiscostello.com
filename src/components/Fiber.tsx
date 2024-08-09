@@ -86,7 +86,7 @@ export const Fiber = () => {
     <div className="h-screen w-screen absolute -z-10">
       <Canvas camera={{ position: [-15, -12, -15], fov: 10 }}>
         <EffectComposer>
-          <Noise opacity={0.2} />
+          <Noise opacity={screenSize.current.w > 560 ? 0.1 : 0.05} />
         </EffectComposer>
         <spotLight
           position={[10, 10, -10]}
@@ -123,9 +123,9 @@ export const Blob = (props: BlobArgs & { w: number; h: number }) => {
     setPosition(newPosition as Vector);
 
     ref.current.position.set(
-      (newPosition[0] / props.w) * 10,
-      (newPosition[1] / props.h) * 10,
-      (newPosition[2] / props.w) * 10
+      (newPosition[0] / 1920) * 10,
+      (newPosition[1] / 1000) * 10,
+      (newPosition[2] / 1920) * 10
     );
 
     ref.current.rotation.x += 0.004;
